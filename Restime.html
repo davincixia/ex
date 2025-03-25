@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .time{
+            /* background-color: aqua; */
+            background-image: url(https://img1.baidu.com/it/u=1611675734,2796231067&fm=253&fmt=auto&app=138&f=PNG?w=830&h=500);
+            width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            line-height: 400px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 50px;
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="time" id="gg"></div>
+
+
+
+
+    <script>
+        
+        
+        // 目标时间 静态即可
+        var OverTime= new Date("2025/6/18")
+        // console.log(StartTime)
+        // console.log(OverTime)
+
+
+
+
+        function DiffTime (StartTime,OverTime) 
+        {
+            // 自动转换 时间戳相减得出毫秒数 处理取整
+           var res=Math.ceil((OverTime-StartTime)/1000)
+           var day=parseInt(res/(60*60*24))
+           var hour=parseInt(res%(60*60*24)/(60*60))
+           var minitue=parseInt(res%(60*60)/(60))
+           var seconds=res%60
+
+           
+
+
+
+            // 返回对象各单位都有
+           var obj={
+            day:day,
+            hour:hour,
+            minitue:minitue,
+            seconds:seconds
+           };
+          
+
+           return obj
+
+        }
+        
+
+
+
+
+        setInterval(function(){
+            // 当前时间对象获取当前时间 需要循环多次创建得到不同差值
+            var StartTime= new Date()
+            // 每次重复拿到差值对象
+            var Ttime = new DiffTime(StartTime,OverTime)
+            // console.log(Ttime.seconds)
+            // console.log(Ttime.day)
+            // 测试
+            // document.write("距离618还有"+Ttime.day+"天"+Ttime.hour+"时"+Ttime.minitue+"分"+Ttime.seconds+"秒")
+            // document.write("<br>")
+
+            document.getElementById("gg").innerHTML="距离618还有"+Ttime.day+"天"+Ttime.hour+"时"+Ttime.minitue+"分"+Ttime.seconds+"秒"
+            
+            
+        },1000)
+
+    </script>
+    
+</body>
+</html>
